@@ -21,6 +21,7 @@ concurrency:
 
 jobs:
   checkout:
+    name: Checkout
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -34,6 +35,9 @@ jobs:
     name: Lint and Test
     runs-on: ubuntu-latest
     steps:
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
       - name: Setup NodeJs
         uses: actions/setup-node@v3
         with:
