@@ -20,24 +20,12 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  checkout:
-    name: Checkout
+  lint-and-test:
+    name: Lint and Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-
-  lint-and-test:
-    needs: checkout
-    name: Lint and Test
-    runs-on: ubuntu-latest
-    steps:
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
       - name: Setup NodeJs
         uses: actions/setup-node@v3
         with:
