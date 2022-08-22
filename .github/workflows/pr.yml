@@ -26,17 +26,17 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.13.x
-          cache: npm
+          cache: yarn
       - name: Install Dependencies
-        run: npm install
+        run: yarn
       - name: Lint
         run: |
           echo "Test"
-          # npm run lint
-      - name: Install
+          # yarn lint
+      - name: Test
         run: |
           echo "Test"
-          # npm run test
+          # yarn test
   build-frontend:
     needs: lint-and-test
     name: Build Frontend
@@ -45,7 +45,7 @@ jobs:
       - name: Build Frontend
         run: |
           echo "Build Frontend"
-          # npm run test
+          # yarn test
   build-backend:
     needs: lint-and-test
     name: Build Backend
@@ -54,10 +54,10 @@ jobs:
       - name: Build Backend
         run: |
           echo "Build Backend"
-          # npm run test
+          # yarn test
   deploy-staging:
     needs: [build-backend, build-frontend]
-    name: Deploy Stating
+    name: Deploy Staging
     runs-on: ubuntu-latest
     steps:
       - name: Deploy Frontend
