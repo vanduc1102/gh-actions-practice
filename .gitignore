@@ -104,4 +104,13 @@ dist
 .tern-port
 
 # Yarn only
-package-lock.json
+package-lock.
+
+# local
+
+local-*
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
