@@ -4,14 +4,22 @@ provider "aws" {
 
 terraform {
   required_version = ">= 0.12.0"
+  backend "s3" {
+    bucket = "wize-space-terraform-backend-store"
+    key    = "github/vanduc1102/gh-actions-practice/terraform/ec2-docker"
+    region = "ap-southeast-1"
+  }
 }
 
 data "aws_vpc" "default" {
   default = true
 }
 
-data "aws_subnet_ids" "all" {
-  vpc_id = data.aws_vpc.default.id
+data "aws_subnets" "all" {
+  filter{
+    name = "vpc-id"
+    values = [data.aws_vpc.default.id]
+  }
 }
 
 ### ECR
@@ -199,7 +207,7 @@ module "db" {
     project = "hello-world"
   }
 
-  subnet_ids = data.aws_subnet_ids.all.ids
+  subnet_ids = data.aws_subnets.all.ids
 
   family                    = "postgres13"
   major_engine_version      = "13"
