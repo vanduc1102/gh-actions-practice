@@ -1,0 +1,11 @@
+variable "name" {}
+variable "aws_profile" {}
+variable "aws_region" {}
+variable "environment" {}
+variable "availability_zones" {}
+variable "private_subnets" {}
+variable "public_subnets" {}
+variable "tsl_certificate_arn" {}
+variable "container_memory" {}
+variable "container_port" {}
+variable "cidr" {}

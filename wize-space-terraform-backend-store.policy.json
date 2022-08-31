@@ -1,0 +1,13 @@
+{
+  "Version":"2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::952458421842:user/wize-space-terraform-user"
+      },
+      "Action": "s3:*",
+      "Resource": "arn:aws:s3:::wize-space-terraform-backend-store"
+    }
+  ]
+}
